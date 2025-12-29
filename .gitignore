@@ -1,0 +1,11 @@
+cat <<EOF > .gitignore
+metadata_important/
+checkpoints/
+pretraining/
+*.pt
+*.pth
+*.ckpt
+.DS_Store
+EOFdmso.h5ed
+dmso.h5ed
+dmso.h5ad

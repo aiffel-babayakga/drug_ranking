@@ -1,0 +1,381 @@
+drug,n_cells
+DMSO_TF,2205786
+Adagrasib,1433284
+Afatinib,696323
+Almonertinib (mesylate),592031
+Cytarabine,551715
+Fumaric acid,549353
+Binimetinib,548375
+Belumosudil,527152
+Pravastatin (sodium),525712
+Berbamine (dihydrochloride),517166
+Flumatinib (mesylate),512601
+Daidzin,493522
+Trametinib,486077
+Naproxen,484400
+Regorafenib,479625
+Irinotecan (hydrochloride),464431
+Topotecan (hydrochloride),453969
+Methylthiouracil,441501
+Berbamine,426351
+Clonidine (hydrochloride),418629
+Uridine,412491
+Chlorhexidine (diacetate),411051
+Perindopril (erbumine),387440
+Gefitinib,375118
+Quinestrol,373473
+Gemcitabine,371258
+Dapagliflozin,370016
+Artesunate,365751
+Goserelin (acetate),353193
+Everolimus,352186
+Allopurinol,345448
+Ataluren,344302
+Tolcapone,344061
+Esmolol (hydrochloride),340412
+Berberine (chloride hydrate),338273
+Hexylresorcinol,337432
+Relugolix,336008
+Cloxacillin (sodium),335754
+Omeprazole,334425
+Gallic acid,330734
+Paclitaxel,330148
+Entecavir (monohydrate),329142
+Lipoic acid,327599
+Baicalin,327146
+Pyridoxine (hydrochloride),323820
+Folic acid,322830
+Fusidic acid,322112
+Tirabrutinib (hydrochloride),321299
+Ponatinib,321174
+Vemurafenib,319319
+Anethole trithione,318727
+Carbidopa (monohydrate),317387
+Filgotinib,315818
+Malotilate,315613
+Clopidogrel,314754
+Brimonidine,314632
+Fulvestrant,314227
+Balsalazide (sodium hydrate),313467
+Gemfibrozil,312814
+Bicalutamide,311710
+S-Adenosyl-L-methionine (disulfate tosylate),311356
+Canagliflozin (hemihydrate),310049
+Terfenadine,309175
+Adenine,308686
+Methyl aminolevulinate (hydrochloride),308069
+Lumateperone (tosylate),307654
+Artemether,307375
+Pentamidine (isethionate),307259
+Neratinib (maleate),305372
+Captopril,304937
+Riluzole hydrochloride,304805
+Retinoic acid,303266
+Piroxicam,302017
+Raltitrexed,301970
+Sulfisoxazole,300827
+Aliskiren,298341
+Pentagastrin,296632
+(R)-Verapamil (hydrochloride),296334
+Rimonabant,295921
+Ornidazole,293960
+Rucaparib (phosphate),293357
+Abiraterone acetate,293223
+Edoxaban (tosylate monohydrate),290957
+Diammonium Glycyrrhizinate,290764
+Pasireotide (acetate),290235
+8-Hydroxyquinoline,290019
+Anastrozole,289294
+Dimethyl fumarate,288592
+Darolutamide,288307
+Triclosan,284345
+Bergenin,284145
+Olanzapine,280699
+Citalopram (hydrobromide),280687
+Tirabrutinib,280532
+Econazole,280500
+Glasdegib,279967
+Norepinephrine (hydrochloride),277865
+Salicylic acid,277326
+Adenosine,277315
+Omeprazole (sodium),277106
+Drospirenone,277068
+Pentoxifylline,276359
+Cyclosporin A,275743
+Tucidinostat,275726
+RMC-6236,274483
+Sodium Salicylate,274234
+Ribociclib,273848
+Cysteamine (hydrochloride),273418
+Amsacrine,272619
+Lucanthone,272374
+Phenylephrine (hydrochloride),269366
+DTP3,267713
+Delamanid,267086
+Indacaterol (maleate),266965
+Bexarotene,264643
+Bestatin (hydrochloride),264336
+Ouabain (Octahydrate),263412
+Megestrol,263074
+Sinomenine,262656
+Palmatine (chloride),262155
+γ-Oryzanol,261962
+Diphenhydramine,261741
+Sivelestat (sodium tetrahydrate),261741
+Allantoin,261587
+Plicamycin,260412
+Tetracycline (hydrochloride),260396
+Trametinib (DMSO_TF solvate),260038
+Benztropine (mesylate),259741
+Loperamide (hydrochloride),258961
+Crizotinib (hydrochloride),257602
+Voriconazole,257565
+Dabrafenib,257191
+Zileuton,256588
+Selinexor,256484
+Isocorydine,256003
+Trifluridine,255273
+Pioglitazone,254637
+Fedratinib (hydrochloride hydrate),254521
+Resveratrol,254402
+Minodronic acid,254013
+Methotrexate,253217
+Fostamatinib (disodium hexahydrate),253175
+BI-3406,253005
+Oxaliplatin,252800
+Panobinostat,252442
+Idoxuridine,251838
+Temsirolimus,251538
+Mebendazole,251188
+Demeclocycline,250986
+Entrectinib,250201
+Erlotinib,249565
+Cinacalcet,249106
+Trimetrexate,249091
+5-Fluorouracil,249048
+Tolmetin,248623
+Aprepitant,248341
+Rimonabant (Hydrochloride),248259
+Sacubitril/Valsartan,247200
+Rutin (trihydrate),247151
+Bestatin,246652
+Tofacitinib,246274
+Pexidartinib (hydrochloride),245688
+olaparib,245440
+Busulfan,244932
+Triamcinolone,244891
+Ranolazine,244484
+Asciminib,244095
+Aspirin,244070
+Posaconazole,243985
+Niclosamide (olamine),243762
+Gallic acid (hydrate),243685
+Atazanavir (sulfate),243032
+Nafamostat (mesylate),242220
+Clotrimazole,241960
+Tucatinib,241730
+Vitamin K4,241419
+Ciclopirox,240717
+Sapanisertib,240223
+Larotrectinib sulfate,239747
+Rapamycin,239744
+Furosemide,239590
+Harringtonine,239535
+(S)-Crizotinib,238307
+Pralsetinib,237989
+Medroxyprogesterone acetate,237733
+Lopinavir,237498
+AZD-8055,237267
+AT7519,236825
+L-Eflornithine (monohydrochloride),235714
+Tazarotene,235123
+Darinaparsin,234376
+Ritonavir,233992
+Vinblastine (sulfate),233646
+Ropivacaine (hydrochloride monohydrate),233544
+Tofacitinib (citrate),232283
+Bimatoprost,232275
+Lapatinib ditosylate,232257
+Sildenafil,231405
+Dexamethasone,231379
+Elagolix sodium,231205
+Lactate (calcium),230188
+Abemaciclib,230104
+Fluvoxamine (maleate),229856
+Ivermectin,229775
+Cilostazol,228611
+Fingolimod (hydrochloride),228535
+Radotinib,228358
+Cabozantinib (S-malate),227189
+Lonafarnib,227136
+Irinotecan,226204
+Estrone sulfate (potassium),225867
+Quinidine (15% dihydroquinidine),225274
+Docetaxel,224057
+Flutamide,223984
+Acetohexamide,222883
+ETC-206,222810
+Vandetanib,221797
+Azithromycin (hydrate),221754
+Brivudine,219894
+LB-100,219882
+Larotrectinib,219702
+Daptomycin,219241
+Pyridoxine,218934
+Neratinib,218680
+APTO-253,217515
+Talc,217493
+Vortioxetine,217447
+Osimertinib (mesylate),217286
+Eplerenone,216397
+Dexmedetomidine,216194
+Infigratinib,215728
+Homoharringtonine,215345
+c-Kit-IN-1,214572
+LY2090314,214326
+Fenofibrate,214174
+Tubulin inhibitor 6,213872
+Idarubicin (hydrochloride),213859
+Tranilast,213758
+Ivabradine (hydrochloride),213551
+Apalutamide,213510
+venetoclax,213368
+ML264,213077
+Verapamil,212856
+Acetazolamide,212671
+Budesonide,212271
+Imiquimod (hydrochloride),212151
+Tadalafil,211058
+9-ING-41,210225
+Cepharanthine,209877
+Proglumide,208781
+BAY1125976,207735
+Sulfatinib,207494
+Vilanterol,206941
+Meloxicam,206819
+Lenalidomide (hemihydrate),206283
+Levobupivacaine (hydrochloride),205794
+Tomivosertib,205541
+Cytarabine (hydrochloride),204969
+4EGI-1,204072
+Oleic acid,204032
+Hydroxyfasudil,202753
+PF-06260933,202652
+Nevirapine,202501
+Capivasertib,201661
+Belinostat,200872
+Macitentan,199861
+Almonertinib (hydrochloride),199641
+18β-Glycyrrhetinic acid,199550
+Clobetasol propionate,198904
+crizotinib,198772
+Bimiralisib,198680
+Benproperine (phosphate),197265
+5-Azacytidine,196913
+Rosiglitazone,196725
+Mifepristone,195886
+Rifaximin,195451
+Mitoxantrone (dihydrochloride),193028
+Ligustrazine,192978
+Dorzolamide (hydrochloride),192458
+Auranofin,192074
+Encorafenib,191556
+Dihydroartemisinin,191079
+Fluvoxamine,190663
+L-Thyroxine (sodium salt pentahydrate),190420
+Erythromycin,189544
+Ixazomib citrate,187826
+DT-061,187622
+Torkinib,187330
+Capmatinib,185971
+Ralimetinib dimesylate,185934
+ERK5-IN-2,184993
+Arbutin,184795
+Futibatinib,182881
+MK-8353,182564
+Thymol,182436
+Altretamine,181972
+GSK1059615,181871
+Oxaprozin,181674
+Thymopentin,181165
+Peretinoin,179393
+Hesperidin,179339
+Monocrotaline,179230
+Vismodegib,178999
+Carbamazepine,178753
+Bentamapimod,178714
+Valdecoxib,177772
+Belumosudil (mesylate),177141
+Ixazomib,175001
+Nimesulide,174956
+Orlistat,174892
+Roxadustat,174468
+Ipatasertib,174297
+BI-78D3,172097
+Temuterkib,171543
+Pimozide,170989
+Bosentan (hydrate),169254
+AZD1390,169171
+Alpelisib,168803
+Volasertib,167796
+Phenytoin (sodium),167137
+Sonidegib,166814
+Sunitinib,166667
+Elimusertib hydrochloride,166019
+palbociclib,165578
+Methylprednisolone succinate,163101
+Saquinavir,161303
+Finasteride,160819
+Verteporfin,158791
+OTS514,158710
+Canagliflozin,157861
+XRK3F2,157778
+Lidocaine (hydrochloride),157639
+Bendamustine,157509
+EX229,157352
+Digitoxin,157122
+Docetaxel (Trihydrate),157117
+PH-797804,156932
+NVP-BHG712,156193
+Betamethasone dipropionate,155944
+Decitabine,155733
+Pimitespib,155110
+Bisoprolol (hemifumarate),153499
+Silodosin,148952
+Epirubicin (hydrochloride),148850
+Mozavaptan,148482
+Procainamide (hydrochloride),147322
+TAK-733,146786
+NG25,145490
+TAK-901,143892
+Doxycycline (monohydrate),142724
+IQ 1,142692
+Doxorubicin (hydrochloride),141759
+Pemetrexed,139883
+Hydroxyurea,137690
+Ferulic acid,137408
+HI-TOPK-032,137177
+CP21R7,136783
+AZD-7648,133462
+Clofarabine,131378
+Penfluridol,129693
+Glycyrrhizic acid,128810
+MK-3903,128217
+Bortezomib,127948
+Simotinib,126219
+"Dapagliflozin ((2S)-1,2-propanediol, hydrate)",123885
+LJI308,123009
+ULK-101,122563
+Celecoxib,122538
+Cobimetinib,117828
+Menadione,117456
+Erdafitinib,111332
+vincristine,107019
+Imiquimod (maleate),102679
+Pitavastatin (Calcium),102552
+AZD2858,94156
+Belzutifan,93147
+SBI-0640756,92889
+Pemigatinib,87862
+LY-2584702 (tosylate salt),86686
+Dinaciclib,45692
