@@ -145,17 +145,20 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
   - Global metrics
   - Per-cell-line stratified metrics
   - Per-drug stratified metrics
+<br/>
 
 ### Tasks
 
 #### 1) Forward Prediction
-- Predict ΔExpression given (drug, cell)
+- 약물-세포 쌍이 주어졌을 때:
+  - 유전자 발현 변화 예측
+<br/>
 
 #### 2) Inverse Retrieval
-- Given a query ΔExpression signature:
-  - Rank candidate drugs by similarity
-
----
+- 쿼리 ΔExpression Signature가 주어졌을 때:
+  - 예측된 반응과의 유사도 계산
+  - 후보 약물 순위 산출
+<br/>
 
 ### Metrics
 
@@ -165,22 +168,21 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 - Cosine similarity
 - Pearson correlation
 - Spearman correlation
+<br/>
 
 #### Ranking / Retrieval
 - Precision@K
 - Recall@K
 - NDCG@K
 - mAP@K
-
----
+<br/>
 
 ### Key Observations
-
-- Incorporating **cell line tokens** significantly improves ranking stability
-- Warm-up before applying ranking loss improves convergence
-- Learned gene embeddings form structured manifolds even without pathway supervision
-
----
+- 명시적인 세포주 토큰(Cell Line Tokens) 사용이 검색 안정성을 크게 향상시킬 수 있습니다.
+- 랭킹 손실의 점진적 도입이 수렴 과정을 더 부드럽게 만듭니다.
+- 학습된 유전자 임베딩이 명시적인 경로(Pathway) 지도 학습 없이도 구조화된 다양체(Manifold)를 형성합니다.
+<br/>
+<br/>
 
 ## ▶️ How to Run
 1. Analyze data imbalance
@@ -210,7 +212,7 @@ pip install torch numpy pandas pyarrow scanpy scipy scikit-learn matplotlib tqdm
 <br/>
 
 ## 🧩 Notes
-- (약물, 세포주) 데이터의 불균형이 심각하여 필터링 과정이 필수적입니다.
+- (약물, 세포주) 데이터의 불균형이 심각하여 필터링 과정이 필수입니다.
 - SMILES 임베딩은 약물 메타데이터의 정렬 순서와 반드시 일치 (Align)해야 합니다.
 <br/>
 <br/>
