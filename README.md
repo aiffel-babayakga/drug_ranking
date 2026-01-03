@@ -49,7 +49,7 @@ drug_ranking-main/
 <br/>
 
 ### Baseline Normalization
-- 모든 발현값은 **ΔExpression (발현 변화량)**으로 변환되었습니다.
+- 모든 발현값은 ΔExpression (발현 변화량)으로 변환되었습니다.
 - 기준이 되는 베이스라인은 각 세포주별 **DMSO-treated control**으로 정의합니다.
 <br/>
 
@@ -70,17 +70,17 @@ drug_ranking-main/
 
 ### Problem Formulation
 
-Let:
-- \( d \): drug
-- \( c \): cell line
-- \( x \in \mathbb{R}^G \): observed gene expression change
-
-We aim to learn a model \( f(d, c) \rightarrow \hat{x} \) such that:
-
-- \( \hat{x} \approx x \) (forward prediction)
-- Drugs can be **ranked** by similarity between \( \hat{x} \) and a query signature
-
----
+다음과 같이 정의합니다.
+  
+- \( d \): 약물 (Drug)
+- \( c \): 세포주 (Cell Line)
+- \( x \in \mathbb{R}^G \): 관측된 유전자 발현 변화량 (Gene Expression Change0
+  
+우리의 목표는 다음 조건을 만족하는 모델 ( f(d, c) \rightarrow \hat{x} )를 학습하는 것입니다.
+  
+- \( \hat{x} \approx x \): 순방향 예측 (Forward Prediction)
+- ( \hat{x} )와 쿼리 시그니처(Query Signature) 간의 유사도를 기반으로 약물의 순위(Rank)를 매길 수 있어야 합니다.
+<br/>
 
 ### Model Architecture (f_r)
 
@@ -183,43 +183,34 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 ---
 
 ## ▶️ How to Run
-
 1. Analyze data imbalance
 ```
 making_data/analysis1.ipynb
 ```
+<br/>
 
 2. Fast prototyping
 ```
 f_p/f_p_smalltargets.ipynb
 ```
+<br/>
 
 3. Full retrieval & ranking
 ```
 f_r/f_r_onalldata_withcellline.ipynb
 ```
-
----
+<br/>
+<br/>
 
 ## 🛠 Requirements
-
-```bash
+```
 pip install torch numpy pandas pyarrow scanpy scipy scikit-learn matplotlib tqdm
 ```
-
----
+<br/>
+<br/>
 
 ## 🧩 Notes
-
-- (Drug, Cell) imbalance is severe → filtering is critical
-- SMILES embeddings **must align** with drug metadata ordering
-- Current implementation is notebook-based for research flexibility
-
----
-
-## 🔮 Future Work
-
-- Script-based training pipeline
-- Zero-shot cell line generalization
-- Pathway-aware evaluation
-- Downstream disease signature reversal experiments
+- (약물, 세포주) 데이터의 불균형이 심각하여 필터링 과정이 필수적입니다.
+- SMILES 임베딩은 약물 메타데이터의 정렬 순서와 반드시 일치 (Align)해야 합니다.
+<br/>
+<br/>
