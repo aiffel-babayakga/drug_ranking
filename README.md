@@ -4,7 +4,7 @@
 - **Forward task**: 약물 + 세포주 → 유전자 발현 변화 예측  
 - **Inverse task**: 원하는 발현 변화를 가장 잘 재현하는 약물 **Ranking / Retrieval**
   
-을 동시에 다루는 **Transformer 기반 딥러닝 연구 프로젝트**입니다.
+을 동시에 다루는 Transformer 기반 딥러닝 연구 프로젝트입니다.
 <br/>
 <br/>
 
