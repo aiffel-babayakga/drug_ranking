@@ -1,31 +1,26 @@
 # 🧬 AI Model for Predicting Drug Effects Using Single-Cell Transcriptomic Data
-대규모 세포–약물 Perturbation 데이터(Tahoe-100M)를 기반으로 약물 처리로 유도되는 유전자 발현 변화(ΔExpression)를 학습하고,
+본 레포지터리는 대규모 세포–약물 Perturbation 데이터(Tahoe-100M)를 기반으로  
+약물 처리로 유도되는 유전자 발현 변화(ΔExpression)를 학습하고,
   
 - **Forward task**: 약물 + 세포주 → 유전자 발현 변화 예측  
 - **Inverse task**: 원하는 발현 변화를 가장 잘 재현하는 약물 **Ranking / Retrieval**
   
-을 동시에 다루는 Transformer 기반 딥러닝 연구 프로젝트입니다.
+을 동시에 다루는 **Transformer 기반 딥러닝 연구 프로젝트**입니다.
 <br/>
 <br/>
 
 ## ✨ Key Contributions
-
-- **Cell-aware Drug Retrieval**: 동일 약물이라도 세포주에 따라 반응이 달라진다는 점을 명시적으로 모델링
-<br/>
-
-- **Dual Perspective Evaluation**: 회귀(ΔExpression 예측) + 랭킹(Retrieval) 지표를 동시에 평가
-<br/>
-
-- **Scalable Design**: Parquet 기반 대용량 perturbation 데이터 직접 로딩 및 학습
-<br/>
-
-- **Representation Alignment**: 유전자 발현 변화 공간과 약물 SMILES 표현 공간의 정렬 실험
+- **Cell-aware Drug Retrieval**: 동일한 약물이라도 세포주에 따라 반응이 달라진다는 점을 명시적으로 모델링
+  
+- **Dual Perspective Evaluation**: ΔExpression 회귀 성능과 약물 Retrieval 성능을 동시에 평가
+  
+- **Scalable Design**: Parquet 기반 대규모 perturbation 데이터를 직접 로딩하여 학습 가능
+  
+- **Representation Alignment**: 유전자 발현 변화 공간과 약물 SMILES 표현 공간 간 정렬 실험 수행
 <br/>
 <br/>
 
 ## 📁 Repository Structure
-본 레포지터리의 구조는 다음과 같습니다.
-  
 ```
 drug_ranking-main/
 ├── f_p/
@@ -44,107 +39,62 @@ drug_ranking-main/
 ## 🧪 Dataset & Preprocessing
 
 ### Data Source
-- **Tahoe-100M** 약물 반응 (Perturbation) 데이터셋 (Parquet 형식)
-- 각 샘플은 `(drug, cell line, gene)`에 대한 반응 측정값에 해당합니다.
+- **Tahoe-100M** single-cell perturbation dataset (Parquet format)
+- 각 샘플은 `(drug, cell line, gene)` 단위의 발현 반응 정보를 포함
 <br/>
+
+---
 
 ### Baseline Normalization
-- 모든 발현값은 ΔExpression (발현 변화량)으로 변환되었습니다.
-- 기준이 되는 베이스라인은 각 세포주별 **DMSO-treated control**으로 정의합니다.
+- 모든 발현값은 **ΔExpression** (발현 변화량)으로 변환
+- 기준 베이스라인은 각 세포주별 **DMSO-treated control**
 <br/>
 
+---
+
 ### Imbalance Analysis (`making_data/analysis1.ipynb`)
-불균형한 데이터셋을 다음 세 가지 수준에서 구체적으로 분석했습니다.
+데이터 불균형을 다음 세 가지 수준에서 분석합니다.
   
-- 약물 수준 (Drug-level)
-- 세포주 수준 (Cell-line-level)
-- 약물, 세포주 쌍 수준 (Drug, Cell-line pair-level)
+- Drug-level
+- Cell-line-level
+- Drug–Cell-line pair-level
   
-분석 결과 Long-tail 분포가 관찰되었으며, 이를 기반으로 다음과 같이 적용했습니다.
-- 최소 샘플 수 임계값 설정 (Thresholding)
-- 안정적인 학습을 위한 쌍 (Pair) 단위 필터링
+분석 결과, 강한 **Long-tail 분포**가 관찰되었으며 이를 바탕으로:
+  
+- 최소 샘플 수 기준 임계값 설정
+- 학습 안정성을 위한 pair 단위 필터링
+  
+을 적용했습니다.
 <br/>
 <br/>
 
 ## 🧠 Methods
-
-### Problem Formulation
-
-다음과 같이 정의합니다.
+본 연구는 두 가지 주요 모듈로 구성됩니다.
   
-- \( d \): 약물 (Drug)
-- \( c \): 세포주 (Cell Line)
-- \( x \in \mathbb{R}^G \): 관측된 유전자 발현 변화량 (Gene Expression Change0
+### 1) Forward Prediction (Response Modeling)
+- 입력: `(drug, cell line)` 쌍
+- 출력: 약물 처리 후 **ΔExpression 벡터**
+- Transformer encoder를 사용하여 유전자 토큰 시퀀스를 모델링
+- 세포주 정보를 명시적인 토큰으로 주입하여 cell-specific response를 학습
   
-우리의 목표는 다음 조건을 만족하는 모델 ( f(d, c) \rightarrow \hat{x} )를 학습하는 것입니다.
-  
-- \( \hat{x} \approx x \): 순방향 예측 (Forward Prediction)
-- ( \hat{x} )와 쿼리 시그니처(Query Signature) 간의 유사도를 기반으로 약물의 순위(Rank)를 매길 수 있어야 합니다.
-<br/>
-
-### Model Architecture (f_r)
-
-**Input Sequence**
-```
-[CLS] [DRUG] [CELL] g₁ g₂ ... gₙ
-```
-
-- `gᵢ`: gene token embedding + projected ΔExpression value
-- `[DRUG]`: SMILES-based drug embedding
-- `[CELL]`: pretrained cell line embedding
-
-**Encoder**
-- Transformer encoder (Cell2Sentence-style)
-- Positional embeddings applied
-
-**Output**
-- `CLS` token → MLP head → predicted ΔExpression vector
-
----
-
-### Fast Prototyping Model (f_p)
-
-- Focused on **small target gene sets**
-- Trained with:
-  - Target gene matching loss
-  - CLIP-like contrastive loss between:
-    - Drug-induced expression representation
-    - SMILES embedding
-
-This stage is used for:
-- Architecture sanity check
-- Retrieval metric validation
-
----
-
-### Loss Functions
-
-#### Forward Regression Loss
-- Mean Squared Error (MSE)
-
-#### Ranking / Alignment Loss
-- Cosine similarity based loss
-- Contrastive / ranking loss (InfoNCE-style)
-
-#### Total Loss (example)
-```
-L = λ_mse · L_mse + λ_rank · L_rank + λ_align · L_align
-```
-
-Warm-up strategy is used where ranking loss weight is gradually increased.
+### 2) Inverse Retrieval (Drug Ranking)
+- 입력: 쿼리 ΔExpression signature
+- 후보 약물에 대해 예측된 반응과의 유사도를 계산
+- 유사도 기반으로 약물 랭킹 산출
+- Retrieval 안정성을 위해 ranking-aware loss를 함께 사용
 <br/>
 <br/>
 
 ## 🧪 Experiments
 
 ### Experimental Setup
-
-- 데이터 분할 (Data Split)
-  - 약물, 세포주 쌍을 기준으로 Train / Validation / Test 분할
-- 평가 (Evaluation)
-  - 전체 지표 (Global metrics)
-  - 세포주별 계층화 지표 (Per-cell-line stratified metrics)
-  - 약물별 계층화 지표 (Per-drug stratified metrics)
+- **Data Split**
+  - 약물–세포주 쌍 기준 Train / Validation / Test 분할
+  
+- **Evaluation Strategy**
+  - 전체(Global) 성능 지표
+  - 세포주별 계층화 지표
+  - 약물별 계층화 지표
 <br/>
 
 ---
@@ -152,12 +102,10 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 ### Tasks
 
 #### 1) Forward Prediction
-- 약물-세포 쌍이 주어졌을 때:
-  - 유전자 발현 변화 예측
-<br/>
-
+- 주어진 약물–세포주 쌍에 대해 유전자 발현 변화 예측
+  
 #### 2) Inverse Retrieval
-- 쿼리 ΔExpression Signature가 주어졌을 때:
+- 쿼리 ΔExpression signature에 대해:
   - 예측된 반응과의 유사도 계산
   - 후보 약물 순위 산출
 <br/>
@@ -166,15 +114,14 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 
 ### Metrics
 
-#### Regression
+#### Regression Metrics
 - MSE
 - MAE
-- Cosine similarity
-- Pearson correlation
-- Spearman correlation
-<br/>
-
-#### Ranking / Retrieval
+- Cosine Similarity
+- Pearson Correlation
+- Spearman Correlation
+  
+#### Ranking / Retrieval Metrics
 - Precision@K
 - Recall@K
 - NDCG@K
@@ -184,26 +131,26 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 ---
 
 ### Key Observations
-- 명시적인 세포주 토큰(Cell Line Tokens) 사용이 검색 안정성을 크게 향상시킬 수 있습니다.
-- 랭킹 손실의 점진적 도입이 수렴 과정을 더 부드럽게 만듭니다.
-- 학습된 유전자 임베딩이 명시적인 경로(Pathway) 지도 학습 없이도 구조화된 다양체(Manifold)를 형성합니다.
+- 세포주 토큰을 명시적으로 사용하는 것이 retrieval 안정성을 크게 향상시킴
+- 랭킹 손실을 점진적으로 도입하면 학습 수렴이 더 부드러워짐
+- 학습된 유전자 임베딩은 명시적 pathway supervision 없이도
+  구조화된 다양체(manifold)를 형성함
 <br/>
 <br/>
 
 ## ▶️ How to Run
-1. Analyze data imbalance
+
+1. 데이터 불균형 분석
 ```
 making_data/analysis1.ipynb
 ```
-<br/>
 
-2. Fast prototyping
+2. Fast prototyping (Inverse task)
 ```
 f_p/f_p_smalltargets.ipynb
 ```
-<br/>
 
-3. Full retrieval & ranking
+3. Full forward prediction & retrieval
 ```
 f_r/f_r_onalldata_withcellline.ipynb
 ```
@@ -211,6 +158,7 @@ f_r/f_r_onalldata_withcellline.ipynb
 <br/>
 
 ## 🛠 Requirements
+
 ```
 pip install torch numpy pandas pyarrow scanpy scipy scikit-learn matplotlib tqdm
 ```
@@ -218,7 +166,8 @@ pip install torch numpy pandas pyarrow scanpy scipy scikit-learn matplotlib tqdm
 <br/>
 
 ## 🧩 Notes
-- (약물, 세포주) 데이터의 불균형이 심각하여 필터링 과정이 필수입니다.
-- SMILES 임베딩은 약물 메타데이터의 정렬 순서와 반드시 일치 (Align)해야 합니다.
+
+- (약물, 세포주) 데이터 불균형이 매우 심하므로 필터링이 필수적입니다.
+- SMILES 임베딩은 약물 메타데이터의 정렬 순서와 반드시 일치해야 합니다.
 <br/>
 <br/>
