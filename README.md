@@ -1,5 +1,5 @@
 # 🧬 AI Model for Predicting Drug Effects Using Single-Cell Transcriptomic Data
-**대규모 세포–약물 Perturbation 데이터(Tahoe-100M)**를 기반으로 약물 처리로 유도되는 **유전자 발현 변화(ΔExpression)**를 학습하고,
+대규모 세포–약물 Perturbation 데이터(Tahoe-100M)를 기반으로 약물 처리로 유도되는 유전자 발현 변화(ΔExpression)를 학습하고,
   
 - **Forward task**: 약물 + 세포주 → 유전자 발현 변화 예측  
 - **Inverse task**: 원하는 발현 변화를 가장 잘 재현하는 약물 **Ranking / Retrieval**
