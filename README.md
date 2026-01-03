@@ -139,13 +139,15 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 
 ### Experimental Setup
 
-- **Train / Validation / Test split**
-  - Per (drug, cell line) pair
-- **Evaluation**
-  - Global metrics
-  - Per-cell-line stratified metrics
-  - Per-drug stratified metrics
+- 데이터 분할 (Data Split)
+  - 약물, 세포주 쌍을 기준으로 Train / Validation / Test 분할
+- 평가 (Evaluation)
+  - 전체 지표 (Global metrics)
+  - 세포주별 계층화 지표 (Per-cell-line stratified metrics)
+  - 약물별 계층화 지표 (Per-drug stratified metrics)
 <br/>
+
+---
 
 ### Tasks
 
@@ -159,6 +161,8 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
   - 예측된 반응과의 유사도 계산
   - 후보 약물 순위 산출
 <br/>
+
+---
 
 ### Metrics
 
@@ -176,6 +180,8 @@ Warm-up strategy is used where ranking loss weight is gradually increased.
 - NDCG@K
 - mAP@K
 <br/>
+
+---
 
 ### Key Observations
 - 명시적인 세포주 토큰(Cell Line Tokens) 사용이 검색 안정성을 크게 향상시킬 수 있습니다.
